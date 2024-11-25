@@ -8,7 +8,6 @@ import (
 	"net/http"
 )
 
-// Login handles user login requests
 func Login(w http.ResponseWriter, r *http.Request) {
 	var req models.LoginRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -25,13 +24,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	resp := models.LoginResponse{Token: token}
 	w.WriteHeader(http.StatusOK)
 	if err := json.NewEncoder(w).Encode(resp); err != nil {
-		// Log the error and return an internal server error
 		log.Println("Error writing response:", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }
 
-// MakePayment handles payment requests
 func MakePayment(w http.ResponseWriter, r *http.Request) {
 	var req struct {
 		Amount float64 `json:"amount"`
@@ -50,17 +47,14 @@ func MakePayment(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	if _, err := w.Write([]byte("Payment successful")); err != nil {
-		// Log the error and return an internal server error
 		log.Println("Error writing response:", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }
 
-// Logout handles user logout requests
 func Logout(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	if _, err := w.Write([]byte("Logout successful")); err != nil {
-		// Log the error and return an internal server error
 		log.Println("Error writing response:", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}

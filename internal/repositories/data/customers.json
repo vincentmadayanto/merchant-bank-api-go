@@ -1,8 +1,32 @@
 [
   {
-    "id": "user",
-    "name": "user",
+    "id": "admin",
+    "name": "admin",
+    "password": "password"
+  },
+  {
+    "id": "customer1",
+    "name": "John Doe",
+    "password": "password"
+  },
+  {
+    "id": "customer2",
+    "name": "Jane Smith",
+    "password": "password"
+  },
+  {
+    "id": "customer3",
+    "name": "Michael Johnson",
+    "password": "password"
+  },
+  {
+    "id": "customer4",
+    "name": "Emily Davis",
+    "password": "password"
+  },
+  {
+    "id": "customer5",
+    "name": "William Brown",
     "password": "password"
   }
 ]
-

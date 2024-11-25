@@ -1,4 +1,3 @@
-// repositories/transaction_repository.go
 package repositories
 
 import (
@@ -13,7 +12,6 @@ var (
 	transactionDataPath = "internal/repositories/data/transactions.json"
 )
 
-// LoadCustomers loads customers from the file (if necessary for your app)
 func LoadCustomers() ([]models.Customer, error) {
 	file, err := os.Open(customerDataPath)
 	if err != nil {
@@ -29,7 +27,6 @@ func LoadCustomers() ([]models.Customer, error) {
 	return customers, nil
 }
 
-// AddTransaction adds a transaction record to the file
 func AddTransaction(transaction models.Transaction) error {
 	file, err := ioutil.ReadFile(transactionDataPath)
 	if err != nil {
@@ -41,10 +38,8 @@ func AddTransaction(transaction models.Transaction) error {
 		return err
 	}
 
-	// Append the new transaction
 	transactions = append(transactions, transaction)
 
-	// Marshal and save back to file
 	updatedData, err := json.Marshal(transactions)
 	if err != nil {
 		return err
